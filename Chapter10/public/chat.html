@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatClient</title>
+    <link href="./semantic.min.css" rel="stylesheet" >
+    <script src="jquery-3.1.1.min.js"></script>      
+    <script src="socket.io.js"></script>
+
+    <script src="chat.js"></script>
+</head>
+<body>
+    <h4>Chatting Client</h4>
+    <hr>
+    <div class="container">
+        <div id="cardbox" class="ui blue fluid card">
+                <div class="content">
+                    <div class="left floated author">
+                        <img id="iconImage" class="ui avatar image" src="./images/author.png">
+                </div>
+                <div>
+                    <div id="titleText" class="header">일대일 채팅</div>
+                        <div id="contentsText" class="description">
+                            연결 및 로그인 후 메시지를 보내세요.
+                    </div>
+                </div>
+                </div>
+        
+            <br>
+            <!-- 연결하기 -->
+            <div>
+                <div class="ui input">
+                    <input type="text" id="hostInput" value="localhost" />
+                </div>
+                <div class="ui input">
+                    <input type="text" id="portInput" value="3000" />
+                </div>
+                <br><br>
+                <input class="ui primary button" type="button" id="connectButton" value="연결하기" />
+            </div>
+            <br>
+            <!-- 로그인/로그아웃 -->
+            <div>
+                <div class="ui input">
+                    <input type="text" id="idInput" value="test01" />
+                </div>
+                <div class="ui input">
+                    <input type="password" id="passwordInput" value="123456" />
+                </div>
+                <br><br>
+                <input class="ui primary button" type="button" id="loginButton" value="로그인" />
+                <input class="ui primary button" type="button" id="logoutButton" value="로그아웃" />
+            </div>
+            <br>
+            <!-- 전송하기 -->
+            <div>
+                <div class="description">
+                    <span>보내는사람 아이디 :</span> 
+                    <div class="ui input">
+                        <input type="text" id="senderInput" value="test01" />
+                    </div>
+                </div>
+                <div class="description">
+                    <span>받는사람 아이디 :</span> 
+                    <div class="ui input">
+                        <input type="text" id="recepientInput" value="ALL" />
+                    </div>
+                </div>
+                <div class="description">
+                    <span>메시지 데이터 :</span> 
+                    <div class="ui input">
+                        <input type="text" id="dataInput" value="안녕!"/> 
+                    </div>
+                </div>
+                <br>
+                <input class="ui primary button" type="button" id="sendButton" value="전송" />
+                <input class="ui primary button" type="button" id="clearButton" value="결과 지우기" />
+            </div>    
+                
+            <br>
+            
+            <!-- 결과 표시 -->
+            <h4 class="ui horizontal divider header">메시지</h4>
+            <div class="ui segment" id="result">
+            </div>
+            
+    </div>
+            
+    </div>
+</body>
+</html>
