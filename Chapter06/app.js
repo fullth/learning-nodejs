@@ -69,7 +69,8 @@ function connectDB() {
 	// });
 
     // 몽구스를 이용한 디비 연결
-    mongoose.Promise = global.Promise;
+    mongoose.Promise = global.Promise; // Review: 몽구스에서의 Promise사용. ES6 전역객체의 프라미스 사용법이라고 함. Promise는 공부해야 함.
+
     mongoose.connect(databaseUrl);
     database = mongoose.connection;
 
@@ -77,6 +78,7 @@ function connectDB() {
     database.on('open', function() {
     	logger.info('DB에 연결되었습니다.');
 
+		// Review: 몽구스 컬렉션의 속성을 정의 
         UserSchema = mongoose.Schema({
             id: String,
             name: String,

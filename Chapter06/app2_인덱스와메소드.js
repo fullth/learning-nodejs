@@ -73,9 +73,13 @@ function connectDB() {
 			updated_at: {type: Date, index: {unique: false}, 'default': Date.now}
         });
 
+		// 몽구스에서는 스키마 객체에 메소드를 추가할 수 있습니다. static() 혹은 method() 중 하나를 사용할 수 있습니다.
+		// 스태틱은 모델 객체에서 호출, 메소드()는 모델 인스턴스 객체에서 호출.
 		UserSchema.static('findById', function(id, callback) {
 			return this.find({id: id}, callback);
 		});
+
+		
 
 		UserSchema.static('findAll', function(callback) {
 			return this.find({ }, callback);
