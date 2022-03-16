@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./jquery-3.1.1.min.js"></script>
+    <script src="jquery.jsonrpc.js"></script>
+    <script>
+        $(function() {
+            $.jsonRPC.setup({
+                endPoint : 'http://localhost:3000/api',
+                namespace : ''
+            });
+            
+            $("#requestButton").click(function() {
+                var message = $("#messageInput").val();
+            
+                var method = 'echo';
+                //var method = 'echo_error';
+                $.jsonRPC.request(method, {
+                    id: 1001,
+                    //id: 1001,
+                    params: [message],
+                    success: function(data) {
+                        println('정상 응답을 받았습니다.');
+                        console.dir(data);
+                        
+                        println(data.result);
+                    },
+                    error: function(data) {
+                        println('에러 응답을 받았습니다.');
+                        console.dir(data);
+                        
+                        println(data.error.message);
+                    }
+                });
+                
+                println('[' + method + '] method로 요청을 보냈습니다.');
+            });
+        });
+        
+        function println(data) {
+            $("#results").append('<p>' + data + '</p>');
+        }
+    </script>
+</head>
+<body>
+    <h3>Echo 핸들러 메소드 테스트</h3>
+    <br>
+    <textarea name="messageInput" id="messageInput"></textarea>
+    <br>
+    <input type="button" id="requestButton" value="요청하기">
+    <br>
+    <p>결과</p>
+    <div id="results"></div>
+</body>
+</html>
