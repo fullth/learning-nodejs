@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>영역 내 커피숍 찾기 테스트</title>
+	</head>
+<body>
+	<h1>영역 내 커피숍 찾기</h1>
+	<br>
+	<h3>http://mygeoposition.com/에서 좌표를 확인하여 추가합니다.</h3>
+	<br>
+	<p>강남역 1번출구와 역삼1동 주민센터 사이의 커피숍</p>
+	<br>
+	<form method="post" action="/process/withincoffeeshop">
+		<table>
+			<tr>
+				<td><label>좌상단 경도</label></td>
+				<td><input type="text" name="topleft_longitude" value="37.49788996359062" ></td>
+			</tr>
+			<tr>
+				<td><label>좌상단 위도</label></td>
+				<td><input type="text" name="topleft_latitude" value="127.02837856105218" ></td>
+			</tr>
+			<tr>
+				<td><label>우하단 경도</label></td>
+				<td><input type="text" name="bottomright_longitude" value="37.49548954149573" ></td>
+			</tr>
+			<tr>
+				<td><label>우하단 위도</label></td>
+				<td><input type="text" name="bottomright_latitude" value="127.03317435084634" ></td>
+			</tr>
+		</table>
+		<input type="submit" value="전송" name="" >
+	</form>
+</body>
+</html>
